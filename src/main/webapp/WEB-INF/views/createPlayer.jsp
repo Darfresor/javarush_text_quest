@@ -15,7 +15,7 @@
 <h1>Знакомство с экипажем</h1>
 <p>${startPageData['meeting_player_info']}</p>
 <p>
-    <input type="text" id ="input_name"></input>
+    <input type="text" id ="input_name" required size="12" maxlength="12"></input>
     <button id="button_create_name">Представиться</button>
 </p>
 </body>
