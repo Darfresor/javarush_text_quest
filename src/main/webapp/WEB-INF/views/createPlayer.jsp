@@ -24,16 +24,14 @@
         let url = '/start?playerName=';
         let playerName = $("#input_name").val();
         url = url.concat(encodeURIComponent(playerName));
-        console.log(url);
         $.ajax({
             url: url,
             type: 'POST',
             contentType: 'application/x-www-form-urlencoded; charset=UTF-8;',
             success: function(){
-                $("#input_name").val("");
+                window.location.href = '/quest';
             }
         });
-
 
 
     }
