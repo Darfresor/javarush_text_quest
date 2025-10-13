@@ -16,4 +16,10 @@ public class StartServlet extends HttpServlet {
         RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/createPlayer.jsp");
         dispatcher.forward(req,resp);
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String playerName = req.getParameter("playerName");
+        System.out.println(playerName);
+    }
 }

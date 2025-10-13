@@ -15,8 +15,27 @@
 <h1>Знакомство с экипажем</h1>
 <p>${startPageData['meeting_player_info']}</p>
 <p>
-    <input type="text" id ="input_name" required size="12" maxlength="12"></input>
-    <button id="button_create_name">Представиться</button>
+    <input type="text" id="input_name" required size="12" maxlength="12"></input>
+    <button onclick="createName()" id="button_create_name">Представиться</button>
 </p>
 </body>
+<script>
+    function createName() {
+        let url = '/start?playerName=';
+        let playerName = $("#input_name").val();
+        url = url.concat(encodeURIComponent(playerName));
+        console.log(url);
+        $.ajax({
+            url: url,
+            type: 'POST',
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8;',
+            success: function(){
+                $("#input_name").val("");
+            }
+        });
+
+
+
+    }
+</script>
 </html>
