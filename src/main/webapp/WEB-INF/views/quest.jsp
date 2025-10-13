@@ -11,6 +11,13 @@
 </head>
 <body>
 <h1>Твой путь начинается здесь, дорогой ${sessionScope.gameSession.playerName}</h1>
+<div>-----------------------------------------------------------------------------</div>
+<div>
+    <p>Статистика:</p>
+    <p>Имя в игре: ${sessionScope.gameSession.playerName}</p>
+    <p>Количество игр: ${sessionScope.gameSession.gamesPlayed}</p>
+    <p>Ид текущего шага квеста: ${sessionScope.gameSession.currentStep}</p>
+</div>
 </body>
 <script>
 </script>
