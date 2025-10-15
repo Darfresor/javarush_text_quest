@@ -22,4 +22,32 @@ public class QuestStep {
         this.choices = choices;
         this.nextSteps = nextSteps;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getStepId() {
+        return stepId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getQuestion() {
+        return question;
+    }
+
+    public Map<String, String> getChoices() {
+        return choices;
+    }
+
+    public Map<String, String> getNextSteps() {
+        return nextSteps;
+    }
 }

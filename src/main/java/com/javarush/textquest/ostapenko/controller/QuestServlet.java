@@ -1,5 +1,7 @@
 package com.javarush.textquest.ostapenko.controller;
 
+import com.javarush.textquest.ostapenko.model.entity.GameSession;
+import com.javarush.textquest.ostapenko.model.entity.QuestStep;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -8,11 +10,20 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "QuestServlet", value = "/quest")
 public class QuestServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        GameSession gameSession = (GameSession) req.getSession().getAttribute("gameSession");
+        String currentStepId = gameSession.getCurrentStep();
+        List<QuestStep> questSteps = (List<QuestStep>) req.getSession().getAttribute("questInfo");
+        QuestStep currentStep = questSteps.stream()
+                .filter(step -> currentStepId.equals(step.getStepId()))
+                .findFirst()
+                .orElse(null);
+        req.getSession().setAttribute("currentStep",currentStep);
         RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/quest.jsp");
         dispatcher.forward(req,resp);
     }

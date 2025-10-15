@@ -30,4 +30,7 @@ public class QuestStepRepository {
                 Map.of("", "")
         ));
     }};
+    public static List<QuestStep> getQuestData(){
+        return storage;
+    }
 }

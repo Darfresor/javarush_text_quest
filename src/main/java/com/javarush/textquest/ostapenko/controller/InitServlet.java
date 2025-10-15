@@ -22,6 +22,7 @@ public class InitServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getSession().setAttribute("startPageData",questService.getStartPageData());
         req.getSession().setAttribute("gameSession",questService.getGameSession());
+        req.getSession().setAttribute("questInfo",questService.getQuestData());
         resp.sendRedirect(req.getContextPath()+"/start");
     }
 }

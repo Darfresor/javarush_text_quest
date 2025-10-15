@@ -10,7 +10,12 @@
     <title>JavaRush Text Quest</title>
 </head>
 <body>
-<h1>Твой путь начинается здесь, дорогой ${sessionScope.gameSession.playerName}</h1>
+<c:if test = "${not empty currentStep}">
+    <h1>${currentStep.description}</h1>
+    <p>${currentStep.question}</p>
+    <button onclick="action('yes')" id="button_yes">Да</button>
+    <button onclick="action('no')" id="button_no">Нет</button>
+</c:if>
 <div>-----------------------------------------------------------------------------</div>
 <div>
     <p>Статистика:</p>
