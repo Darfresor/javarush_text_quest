@@ -13,8 +13,18 @@
 <c:if test = "${not empty currentStep}">
     <h1>${currentStep.description}</h1>
     <p>${currentStep.question}</p>
-    <button onclick="action('yes')" id="button_yes">Да</button>
-    <button onclick="action('no')" id="button_no">Нет</button>
+    <div class="choice-group">
+        <div class="choice-item">
+            <input type="radio" id="choice1" name="choice" value="yes">
+            <label for="choice1">${currentStep.choices['yes']}</label>
+        </div>
+        <div class="choice-item">
+            <input type="radio" id="choice2" name="choice" value="no">
+            <label for="choice2">${currentStep.choices['no']}</label>
+        </div>
+    </div>
+
+    <button onclick="answer()" id="button_answer">Ответить</button>
 </c:if>
 <div>-----------------------------------------------------------------------------</div>
 <div>
