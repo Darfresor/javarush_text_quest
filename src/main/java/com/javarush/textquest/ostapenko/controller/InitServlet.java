@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "initServlet", value = "/index.jsp")
+//@WebServlet(name = "initServlet", value = "/index.jsp")
 public class InitServlet extends HttpServlet {
     private QuestService questService;
 
