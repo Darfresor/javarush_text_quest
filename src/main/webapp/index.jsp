@@ -11,20 +11,7 @@
     <title>Текстовый квест</title>
 </head>
 <body>
-<header>
-    <h1>Добро пожаловать в мастерскую квестов</h1>
-    <nav>
-        <div class="nav-left">
-            <a href="#">О нас</a> |
-            <a href="#">Квесты</a> |
-            <a href="#">Форум</a> |
-            <a href="#">Мастерская квестов</a>
-        </div>
-        <div class="nav-right">
-            <a href="#">Личный кабинет</a>
-        </div>
-    </nav>
-</header>
+<jsp:include page="/WEB-INF/fragments/header.jsp"/>
 
 
 <div class="content">
@@ -33,5 +20,7 @@
     <p>Текст... текст... текст...</p>
     <p>Ещё больше текста...</p>
 </div>
+
+<jsp:include page="/WEB-INF/fragments/footer.jsp"/>
 </body>
 </html>
