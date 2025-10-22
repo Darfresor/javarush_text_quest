@@ -10,17 +10,17 @@
     <title>JavaRush Text Quest</title>
 </head>
 <body>
-<c:if test = "${not empty currentStep}">
+<c:if test="${not empty currentStep}">
     <h1>${currentStep.description}</h1>
     <p>${currentStep.question}</p>
     <div class="choice-group">
         <div class="choice-item">
-            <input type="radio" id="choice1" name="choice" value="yes">
-            <label for="choice1">${currentStep.choices['yes']}</label>
+            <input  type="radio"  id="choice1" name="choice" value="yes">
+            <label for="choice1" onclick ="clickFirst()">${currentStep.choices['yes']}</label>
         </div>
         <div class="choice-item">
             <input type="radio" id="choice2" name="choice" value="no">
-            <label for="choice2">${currentStep.choices['no']}</label>
+            <label for="choice2" onclick ="clickSecond()">${currentStep.choices['no']}</label>
         </div>
     </div>
 
@@ -35,5 +35,32 @@
 </div>
 </body>
 <script>
+    let userChoice = "";
+
+    function clickFirst(){
+        let userChoices = $("#choice1").val();
+        userChoice = userChoices;
+
+    };
+    function clickSecond(){
+        let userChoices = $("#choice2").val();
+        userChoice = userChoices;
+    };
+
+    function answer() {
+        console.log(userChoice);
+        let playerChoice = {
+            answer: userChoice
+        }
+        let url = "/quest";
+        let jsonString = JSON.stringify(playerChoice);
+        $.ajax({
+            type: 'POST',
+            url: url,
+            contentType: 'application/json;',
+            data: jsonString
+        });
+
+    }
 </script>
 </html>
