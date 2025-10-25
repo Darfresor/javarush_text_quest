@@ -1,42 +1,68 @@
+/* Основные стили body */
+body {
+    margin: 0;
+    padding-top: 90px; /* УВЕЛИЧЕНО с 70px до 90px */
+    padding-bottom: 50px;
+    min-height: 100vh;
+}
+
+/* Фиксированная шапка */
 header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     background-color: #f8f9fa;
-    padding: 15px 20px;
+    padding: 15px 20px; /* УВЕЛИЧЕНО: было 10px 20px */
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     z-index: 1000;
+    height: 90px; /* УВЕЛИЧЕНО: было 50px */
+    box-sizing: border-box;
 }
 
-body {
-    margin: 0;
-    padding-top: 80px; /* Отступ для контента под шапкой */
-}
-
-
-
+/* Навигация */
 nav {
     display: flex;
-    justify-content: space-between; /* растягивает на всю ширину */
+    justify-content: space-between;
     align-items: center;
+    height: 100%;
 }
 
 .nav-left {
-    /* Левые ссылки автоматически займут доступное пространство */
+    font-size: 14px;
 }
-
 
 .nav-right {
     margin-right: 20px;
+    font-size: 14px;
 }
 
-body {
-    margin: 0;
-    padding-top: 80px;
+/* Заголовок h1 в шапке */
+header h1 {
+    margin: 0 0 8px 0; /* ДОБАВЛЕНО: отступ снизу для разделения с меню */
+    font-size: 20px; /* УВЕЛИЧЕНО: было 18px */
+    line-height: 1.2;
+    text-align: center; /* ДОБАВЛЕНО: центрируем заголовок */
 }
 
+/* Основной контент */
 .content {
     padding: 20px;
-    height: 1500px;
+    min-height: calc(100vh - 140px); /* ОБНОВЛЕНО: 100vh - (90px + 50px) */
+}
+
+/* Фиксированный футер */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+    text-align: center;
+    border-top: 1px solid #e9ecef;
+    z-index: 1000;
+    height: 40px;
+    box-sizing: border-box;
+    font-size: 14px;
 }
