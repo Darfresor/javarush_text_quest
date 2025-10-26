@@ -11,7 +11,7 @@
 <jsp:include page="/WEB-INF/fragments/header.jsp"/>
 
 <div class="content">
-    <p>Страница ${questListResponse.currentPage} из ${questListResponse.totalPages}</p>
+    <p>Страница ${questListResponse.currentPage + 1} из ${questListResponse.totalPages}</p>
     <div class="quests-list">
         <c:forEach var="quest" items="${questListResponse.quests}" varStatus="status">
             <div class="quest-item">
@@ -24,6 +24,9 @@
                     <c:if test="${not empty quest.imgUrl && quest.imgUrl != 'none'}">
                         <img src="${quest.imgUrl}" alt="Изображение квеста" width="100">
                     </c:if>
+                </div>
+                <div class ="quest ref">
+                    <a href="/quests/${quest.id}">Начать квест</a>
                 </div>
             </div>
         </c:forEach>
