@@ -2,11 +2,14 @@ package com.javarush.textquest.ostapenko.model;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.javarush.textquest.ostapenko.dto.QuestCardDTO;
+import com.javarush.textquest.ostapenko.dto.QuestListResponse;
 import com.javarush.textquest.ostapenko.model.entity.QuestCard;
 
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class QuestService {
     private List<QuestCard> quests = new ArrayList<>();
@@ -33,10 +36,6 @@ public class QuestService {
         }
     }
 
-    public List<QuestCard> getAllQuests() {
-        return new ArrayList<>(quests);
-    }
-
     public QuestCard getQuestById(Long id) {
         return quests.stream()
                 .filter(q -> q.getId().equals(id))
@@ -47,4 +46,34 @@ public class QuestService {
     public static QuestService getInstance() {
         return INSTANCE;
     }
+
+    public QuestListResponse getAllQuests(int page, int size) {
+        List<QuestCard> allQuests = quests;
+
+        int start = page * size;
+        int end = Math.min(start + size, allQuests.size());
+        List<QuestCard> pageQuests = allQuests.subList(start, end);
+
+
+        List<QuestCardDTO> questDTOs = pageQuests.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+
+        return new QuestListResponse(
+                questDTOs,
+                (int) Math.ceil((double) allQuests.size() / size),
+                page
+        );
+
+    }
+
+    private QuestCardDTO convertToDTO(QuestCard quest) {
+        return new QuestCardDTO(
+                quest.getId(),
+                quest.getDescription(),
+                quest.isNew(),
+                quest.getImgUrl()
+        );
+    }
+
 }

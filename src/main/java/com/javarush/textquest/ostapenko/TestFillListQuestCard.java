@@ -15,8 +15,8 @@ import java.util.List;
 public class TestFillListQuestCard {
     public static void main(String[] args) throws IOException {
         QuestCard questCard1 = new QuestCard(1L, "История о попаданце в мир Мурима.", false, "none");
-        QuestCard questCard2 = new QuestCard(2L, "История о попаданце в мир Мурима.", false, "none");
-        QuestCard questCard3 = new QuestCard(3L, "История о попаданце в мир Мурима.", false, "none");
+        QuestCard questCard2 = new QuestCard(2L, "История по мотивам романа Всеведущий читатель", false, "none");
+        QuestCard questCard3 = new QuestCard(3L, "История в стиле РеалРПГ во вселенной Ника Перумова.", false, "none");
 
         List<QuestCard> list = new ArrayList<>();
         list.add(questCard1);
