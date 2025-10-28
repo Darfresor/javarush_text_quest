@@ -9,11 +9,11 @@ public class QuestionDTO {
     private String description;
     private String question;
     private String imgUrl;
-    private List<Answer> answers;
+    private List<AnswerDTO> answers;
     private boolean defeatFlag = false;
     private boolean winFlag = false;
 
-    public QuestionDTO(Long id, String description, String question, String imgUrl, List<Answer> answers, boolean defeatFlag, boolean winFlag) {
+    public QuestionDTO(Long id, String description, String question, String imgUrl, List<AnswerDTO> answers, boolean defeatFlag, boolean winFlag) {
         this.id = id;
         this.description = description;
         this.question = question;
@@ -39,7 +39,7 @@ public class QuestionDTO {
         return imgUrl;
     }
 
-    public List<Answer> getAnswers() {
+    public List<AnswerDTO> getAnswers() {
         return answers;
     }
 

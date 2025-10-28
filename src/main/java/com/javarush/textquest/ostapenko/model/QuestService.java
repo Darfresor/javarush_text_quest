@@ -2,9 +2,11 @@ package com.javarush.textquest.ostapenko.model;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.javarush.textquest.ostapenko.dto.AnswerDTO;
 import com.javarush.textquest.ostapenko.dto.QuestCardDTO;
 import com.javarush.textquest.ostapenko.dto.QuestListResponse;
 import com.javarush.textquest.ostapenko.dto.QuestionDTO;
+import com.javarush.textquest.ostapenko.model.entity.Answer;
 import com.javarush.textquest.ostapenko.model.entity.QuestCard;
 import com.javarush.textquest.ostapenko.model.entity.Question;
 
@@ -106,10 +108,30 @@ public class QuestService {
                 question.getDescription(),
                 question.getQuestion(),
                 question.getImgUrl(),
-                question.getAnswers(),
+                convertToDTO(question.getAnswers()),
                 question.getDefeatFlag(),
                 question.getWinFlag()
         );
+    }
+    private AnswerDTO convertToDTO(Answer answer) {
+        return new AnswerDTO(
+                answer.getId(),
+                answer.getDescription(),
+                convertToDTO(answer.getNextQuestion())
+        );
+    }
+    private List<AnswerDTO> convertToDTO(List<Answer> answers) {
+        List<AnswerDTO> list = new ArrayList<>();
+        for (Answer answer : answers) {
+            list.add(
+                    new AnswerDTO(
+                            answer.getId(),
+                            answer.getDescription(),
+                            convertToDTO(answer.getNextQuestion())
+                    )
+            );
+        }
+        return list;
     }
 
 }
