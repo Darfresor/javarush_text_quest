@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.javarush.textquest.ostapenko.dto.QuestCardDTO;
 import com.javarush.textquest.ostapenko.dto.QuestListResponse;
 import com.javarush.textquest.ostapenko.model.entity.QuestCard;
+import com.javarush.textquest.ostapenko.model.entity.Question;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -13,11 +14,13 @@ import java.util.stream.Collectors;
 
 public class QuestService {
     private List<QuestCard> quests = new ArrayList<>();
+    private List<Question> questions = new ArrayList<>();
 
     private static final QuestService INSTANCE = new QuestService();
 
     private QuestService() {
         loadQuests();
+        loadQuestions();
     }
 
     private void loadQuests() {
@@ -33,6 +36,21 @@ public class QuestService {
             }
         } catch (Exception e) {
             System.err.println("error load quests: " + e.getMessage());
+        }
+    }
+    private void loadQuestions() {
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            InputStream inputStream = getClass().getClassLoader()
+                    .getResourceAsStream("data/quests/listQuestion.json");
+
+            if (inputStream != null) {
+                this.questions = mapper.readValue(inputStream,
+                        new TypeReference<List<Question>>() {});
+                System.out.println("Loaded question: " + questions.size());
+            }
+        } catch (Exception e) {
+            System.err.println("error load question: " + e.getMessage());
         }
     }
 

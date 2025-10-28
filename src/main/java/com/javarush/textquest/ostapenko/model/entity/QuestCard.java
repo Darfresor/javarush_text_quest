@@ -8,6 +8,7 @@ public class QuestCard {
     @JsonProperty("new")
     private boolean isNew;
     private String imgUrl;
+    private Question startQuestion;
 
     public QuestCard() {
     }

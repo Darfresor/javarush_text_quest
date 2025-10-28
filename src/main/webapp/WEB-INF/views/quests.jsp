@@ -26,7 +26,7 @@
                     </c:if>
                 </div>
                 <div class ="quest ref">
-                    <a href="/quests/${quest.id}">Начать квест</a>
+                    <a href="/quests/start?id=${quest.id}">Начать квест</a>
                 </div>
             </div>
         </c:forEach>
