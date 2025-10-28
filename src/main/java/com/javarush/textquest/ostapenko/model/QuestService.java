@@ -98,38 +98,41 @@ public class QuestService {
                 quest.getDescription(),
                 quest.isNew(),
                 quest.getImgUrl(),
-                convertToDTO(quest.getStartQuestion())
+                quest.getStartQuestion() != null ? convertToDTO(quest.getStartQuestion()) : null
         );
     }
 
     private QuestionDTO convertToDTO(Question question) {
+        if (question == null) {
+            return null;
+        }
         return new QuestionDTO(
                 question.getId(),
                 question.getDescription(),
                 question.getQuestion(),
                 question.getImgUrl(),
-                convertToDTO(question.getAnswers()),
+                question.getAnswers() != null ? convertToDTO(question.getAnswers()) : new ArrayList<>(),
                 question.getDefeatFlag(),
                 question.getWinFlag()
         );
     }
     private AnswerDTO convertToDTO(Answer answer) {
+        if (answer == null) {
+            return null;
+        }
         return new AnswerDTO(
                 answer.getId(),
                 answer.getDescription(),
-                convertToDTO(answer.getNextQuestion())
+                answer.getNextQuestion() != null ? convertToDTO(answer.getNextQuestion()) : null
         );
     }
     private List<AnswerDTO> convertToDTO(List<Answer> answers) {
+        if (answers == null) {
+            return new ArrayList<>();
+        }
         List<AnswerDTO> list = new ArrayList<>();
         for (Answer answer : answers) {
-            list.add(
-                    new AnswerDTO(
-                            answer.getId(),
-                            answer.getDescription(),
-                            convertToDTO(answer.getNextQuestion())
-                    )
-            );
+            list.add(convertToDTO(answer));
         }
         return list;
     }

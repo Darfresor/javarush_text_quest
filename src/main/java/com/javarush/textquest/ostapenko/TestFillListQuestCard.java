@@ -110,6 +110,10 @@ public class TestFillListQuestCard {
         Question question7 = new Question(7L, """
                 Заглушка.
                 ""","Заглушка","none");
+        List<Answer> listOfQuestion7 = new ArrayList<>();
+        Answer answer7 = new Answer(7L,"Заглушка");
+        listOfQuestion7.add(answer7);
+        question7.setAnswers(listOfQuestion7);
 
         List<Question> listQuestion = new ArrayList<>();
         listQuestion.add(question1);

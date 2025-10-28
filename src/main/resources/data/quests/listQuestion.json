@@ -195,7 +195,11 @@
   "description" : "Заглушка.\n",
   "question" : "Заглушка",
   "imgUrl" : "none",
-  "answers" : null,
+  "answers" : [ {
+    "id" : 7,
+    "description" : "Заглушка",
+    "nextQuestion" : null
+  } ],
   "defeatFlag" : false,
   "winFlag" : false
 } ]

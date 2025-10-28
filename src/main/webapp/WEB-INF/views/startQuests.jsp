@@ -13,6 +13,8 @@
 
 <div class="content">
     Начало квестовой истории
+   <p> ${startQuestion.description} <p>
+   <p> ${startQuestion.question} <p>
 </div>
 
 <jsp:include page="/WEB-INF/fragments/footer.jsp"/>
