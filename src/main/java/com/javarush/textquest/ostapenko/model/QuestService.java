@@ -27,7 +27,7 @@ public class QuestService {
         try {
             ObjectMapper mapper = new ObjectMapper();
             InputStream inputStream = getClass().getClassLoader()
-                    .getResourceAsStream("data/quests/list.json");
+                    .getResourceAsStream("data/quests/listCard.json");
 
             if (inputStream != null) {
                 this.quests = mapper.readValue(inputStream,

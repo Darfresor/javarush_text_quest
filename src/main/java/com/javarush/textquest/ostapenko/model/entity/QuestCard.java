@@ -13,11 +13,12 @@ public class QuestCard {
     public QuestCard() {
     }
 
-    public QuestCard(Long id, String description, boolean isNew, String imgUrl) {
+    public QuestCard(Long id, String description, boolean isNew, String imgUrl, Question startQuestion) {
         this.id = id;
         this.description = description;
         this.isNew = isNew;
         this.imgUrl = imgUrl;
+        this.startQuestion = startQuestion;
     }
 
     @Override
@@ -44,5 +45,9 @@ public class QuestCard {
 
     public String getImgUrl() {
         return imgUrl;
+    }
+
+    public Question getStartQuestion() {
+        return startQuestion;
     }
 }
