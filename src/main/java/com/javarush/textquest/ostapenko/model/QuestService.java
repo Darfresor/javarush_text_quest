@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.javarush.textquest.ostapenko.dto.QuestCardDTO;
 import com.javarush.textquest.ostapenko.dto.QuestListResponse;
+import com.javarush.textquest.ostapenko.dto.QuestionDTO;
 import com.javarush.textquest.ostapenko.model.entity.QuestCard;
 import com.javarush.textquest.ostapenko.model.entity.Question;
 
@@ -31,13 +32,15 @@ public class QuestService {
 
             if (inputStream != null) {
                 this.quests = mapper.readValue(inputStream,
-                        new TypeReference<List<QuestCard>>() {});
+                        new TypeReference<List<QuestCard>>() {
+                        });
                 System.out.println("Loaded quests: " + quests.size());
             }
         } catch (Exception e) {
             System.err.println("error load quests: " + e.getMessage());
         }
     }
+
     private void loadQuestions() {
         try {
             ObjectMapper mapper = new ObjectMapper();
@@ -46,7 +49,8 @@ public class QuestService {
 
             if (inputStream != null) {
                 this.questions = mapper.readValue(inputStream,
-                        new TypeReference<List<Question>>() {});
+                        new TypeReference<List<Question>>() {
+                        });
                 System.out.println("Loaded question: " + questions.size());
             }
         } catch (Exception e) {
@@ -54,11 +58,12 @@ public class QuestService {
         }
     }
 
-    public QuestCard getQuestById(Long id) {
-        return quests.stream()
+    public QuestCardDTO getQuestById(Long id) {
+        QuestCard currentQuest = quests.stream()
                 .filter(q -> q.getId().equals(id))
                 .findFirst()
                 .orElse(null);
+        return convertToDTO(currentQuest);
     }
 
     public static QuestService getInstance() {
@@ -90,7 +95,20 @@ public class QuestService {
                 quest.getId(),
                 quest.getDescription(),
                 quest.isNew(),
-                quest.getImgUrl()
+                quest.getImgUrl(),
+                convertToDTO(quest.getStartQuestion())
+        );
+    }
+
+    private QuestionDTO convertToDTO(Question question) {
+        return new QuestionDTO(
+                question.getId(),
+                question.getDescription(),
+                question.getQuestion(),
+                question.getImgUrl(),
+                question.getAnswers(),
+                question.getDefeatFlag(),
+                question.getWinFlag()
         );
     }
 

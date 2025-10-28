@@ -2,7 +2,15 @@
   "id" : 1,
   "description" : "История о попаданце в мир Мурима.",
   "imgUrl" : "none",
-  "startQuestion" : null,
+  "startQuestion" : {
+    "id" : 7,
+    "description" : "Заглушка.\n",
+    "question" : "Заглушка",
+    "imgUrl" : "none",
+    "answers" : null,
+    "defeatFlag" : false,
+    "winFlag" : false
+  },
   "new" : false
 }, {
   "id" : 2,
@@ -94,6 +102,14 @@
   "id" : 3,
   "description" : "История в стиле РеалРПГ во вселенной Ника Перумова.",
   "imgUrl" : "none",
-  "startQuestion" : null,
+  "startQuestion" : {
+    "id" : 7,
+    "description" : "Заглушка.\n",
+    "question" : "Заглушка",
+    "imgUrl" : "none",
+    "answers" : null,
+    "defeatFlag" : false,
+    "winFlag" : false
+  },
   "new" : false
 } ]

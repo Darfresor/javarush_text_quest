@@ -190,4 +190,12 @@
   "answers" : null,
   "defeatFlag" : false,
   "winFlag" : false
+}, {
+  "id" : 7,
+  "description" : "Заглушка.\n",
+  "question" : "Заглушка",
+  "imgUrl" : "none",
+  "answers" : null,
+  "defeatFlag" : false,
+  "winFlag" : false
 } ]

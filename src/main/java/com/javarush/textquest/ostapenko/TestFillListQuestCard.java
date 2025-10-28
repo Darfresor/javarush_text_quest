@@ -107,6 +107,10 @@ public class TestFillListQuestCard {
         question5.setWinFlag(true);
 
 
+        Question question7 = new Question(7L, """
+                Заглушка.
+                ""","Заглушка","none");
+
         List<Question> listQuestion = new ArrayList<>();
         listQuestion.add(question1);
         listQuestion.add(question2);
@@ -114,6 +118,7 @@ public class TestFillListQuestCard {
         listQuestion.add(question4);
         listQuestion.add(question5);
         listQuestion.add(question6);
+        listQuestion.add(question7);
 
         ObjectMapper mapper1 = new ObjectMapper();
         mapper1.enable(SerializationFeature.INDENT_OUTPUT);
@@ -132,9 +137,9 @@ public class TestFillListQuestCard {
 
 
 
-        QuestCard questCard1 = new QuestCard(1L, "История о попаданце в мир Мурима.", false, "none",null);
+        QuestCard questCard1 = new QuestCard(1L, "История о попаданце в мир Мурима.", false, "none",question7);
         QuestCard questCard2 = new QuestCard(2L, "История по мотивам романа Всеведущий читатель", false, "none",question1);
-        QuestCard questCard3 = new QuestCard(3L, "История в стиле РеалРПГ во вселенной Ника Перумова.", false, "none",null);
+        QuestCard questCard3 = new QuestCard(3L, "История в стиле РеалРПГ во вселенной Ника Перумова.", false, "none",question7);
 
         List<QuestCard> list = new ArrayList<>();
         list.add(questCard1);
