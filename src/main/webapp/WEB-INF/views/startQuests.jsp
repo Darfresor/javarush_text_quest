@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -13,8 +12,13 @@
 
 <div class="content">
     Начало квестовой истории
-   <p> ${startQuestion.description} <p>
-   <p> ${startQuestion.question} <p>
+    <p> ${startQuestion.description} </p>
+    <p> ${startQuestion.question} </p>
+    <p>
+        <c:forEach var="answer" items="${startQuestion.answers}" varStatus="status">
+            <button onclick="nextQuestion(${answer.id})" id="button_answer_${answer.id}"> ${answer.description}</button>
+        </c:forEach>
+    </p>
 </div>
 
 <jsp:include page="/WEB-INF/fragments/footer.jsp"/>
