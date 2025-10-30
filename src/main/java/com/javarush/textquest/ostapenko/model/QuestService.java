@@ -18,12 +18,14 @@ import java.util.stream.Collectors;
 public class QuestService {
     private List<QuestCard> quests = new ArrayList<>();
     private List<Question> questions = new ArrayList<>();
+    private List<Answer> answers = new ArrayList<>();
 
     private static final QuestService INSTANCE = new QuestService();
 
     private QuestService() {
         loadQuests();
         loadQuestions();
+        loadAnswers();
     }
 
     private void loadQuests() {
@@ -59,6 +61,22 @@ public class QuestService {
             System.err.println("error load question: " + e.getMessage());
         }
     }
+    private void loadAnswers() {
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            InputStream inputStream = getClass().getClassLoader()
+                    .getResourceAsStream("data/quests/listAnswer.json");
+
+            if (inputStream != null) {
+                this.answers = mapper.readValue(inputStream,
+                        new TypeReference<List<Answer>>() {
+                        });
+                System.out.println("Loaded answer: " + answers.size());
+            }
+        } catch (Exception e) {
+            System.err.println("error load answer: " + e.getMessage());
+        }
+    }
 
     public QuestCardDTO getQuestById(Long id) {
         QuestCard currentQuest = quests.stream()
@@ -66,6 +84,14 @@ public class QuestService {
                 .findFirst()
                 .orElse(null);
         return convertToDTO(currentQuest);
+    }
+
+    public AnswerDTO getAnswerById(Long id) {
+        Answer currentAnswer = answers.stream()
+                .filter(q -> q.getId().equals(id))
+                .findFirst()
+                .orElse(null);
+        return convertToDTO(currentAnswer);
     }
 
     public static QuestService getInstance() {

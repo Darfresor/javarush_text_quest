@@ -141,6 +141,32 @@ public class TestFillListQuestCard {
 
 
 
+        List<Answer> listAnswer = new ArrayList<>();
+        listAnswer.add(answer1);
+        listAnswer.add(answer2);
+        listAnswer.add(answer3);
+        listAnswer.add(answer4);
+        listAnswer.add(answer5);
+        listAnswer.add(answer6);
+        listAnswer.add(answer7);
+
+        ObjectMapper mapper2 = new ObjectMapper();
+        mapper2.enable(SerializationFeature.INDENT_OUTPUT);
+        Path sourceResourcesPath2 = Paths.get("src/main/resources/data/quests");
+        mapper2.writerWithDefaultPrettyPrinter()
+                .writeValue(sourceResourcesPath2.resolve("listAnswer.json").toFile(), listAnswer);
+
+        // Чтение из файла обратно в Java объект
+        mapper2 = new ObjectMapper();
+        List<Answer> loadedList2 = mapper2.readValue(
+                new File("src/main/resources/data/quests/listAnswer.json"),
+                new TypeReference<List<Answer>>() {
+                }
+        );
+        System.out.println(loadedList2);
+
+
+
         QuestCard questCard1 = new QuestCard(1L, "История о попаданце в мир Мурима.", false, "none",question7);
         QuestCard questCard2 = new QuestCard(2L, "История по мотивам романа Всеведущий читатель", false, "none",question1);
         QuestCard questCard3 = new QuestCard(3L, "История в стиле РеалРПГ во вселенной Ника Перумова.", false, "none",question7);

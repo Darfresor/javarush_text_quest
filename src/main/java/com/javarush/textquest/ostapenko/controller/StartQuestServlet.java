@@ -1,6 +1,7 @@
 package com.javarush.textquest.ostapenko.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.javarush.textquest.ostapenko.dto.AnswerDTO;
 import com.javarush.textquest.ostapenko.dto.QuestCardDTO;
 import com.javarush.textquest.ostapenko.dto.QuestionDTO;
 import com.javarush.textquest.ostapenko.dto.UserChoice;
@@ -33,9 +34,14 @@ public class StartQuestServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ObjectMapper mapper = new ObjectMapper();
+        QuestService qs = QuestService.getInstance();
 
+        ObjectMapper mapper = new ObjectMapper();
         UserChoice userChoice = mapper.readValue(req.getReader(), UserChoice.class);
         System.out.println(userChoice.getId());
+
+        AnswerDTO answer = qs.getAnswerById(userChoice.getId());
+        QuestionDTO question = answer.getNextQuestion();
+        System.out.println(question);
     }
 }
