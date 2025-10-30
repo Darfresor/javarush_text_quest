@@ -1,7 +1,9 @@
 package com.javarush.textquest.ostapenko.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.javarush.textquest.ostapenko.dto.QuestCardDTO;
 import com.javarush.textquest.ostapenko.dto.QuestionDTO;
+import com.javarush.textquest.ostapenko.dto.UserChoice;
 import com.javarush.textquest.ostapenko.model.QuestService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -27,5 +29,13 @@ public class StartQuestServlet extends HttpServlet {
         req.setAttribute("startQuestion",startQuestion);
         RequestDispatcher dispatcher  = req.getRequestDispatcher("/WEB-INF/views/startQuests.jsp");
         dispatcher.forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ObjectMapper mapper = new ObjectMapper();
+
+        UserChoice userChoice = mapper.readValue(req.getReader(), UserChoice.class);
+        System.out.println(userChoice.getId());
     }
 }

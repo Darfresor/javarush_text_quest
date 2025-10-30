@@ -1,21 +1,16 @@
 package com.javarush.textquest.ostapenko.dto;
 
 public class UserChoice {
-    private String answer;
+    private Long id;
 
-    // Обязательно нужен конструктор по умолчанию
-    public UserChoice() {}
-
-    public UserChoice(String answer) {
-        this.answer = answer;
+    public UserChoice() {
     }
 
-    // Геттеры и сеттеры
-    public String getAnswer() {
-        return answer;
+    public UserChoice(Long id) {
+        this.id = id;
     }
 
-    public void setAnswer(String answer) {
-        this.answer = answer;
+    public Long getId() {
+        return id;
     }
 }

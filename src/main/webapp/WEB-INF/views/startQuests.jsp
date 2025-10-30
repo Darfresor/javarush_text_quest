@@ -11,7 +11,7 @@
 <jsp:include page="/WEB-INF/fragments/header.jsp"/>
 
 <div class="content">
-    Начало квестовой истории
+    Квестовая история
     <p> ${startQuestion.description} </p>
     <p> ${startQuestion.question} </p>
     <p>
@@ -23,4 +23,20 @@
 
 <jsp:include page="/WEB-INF/fragments/footer.jsp"/>
 </body>
+<script>
+function nextQuestion(answerId) {
+    let url = '/quests/start';
+    let answerInfo = {
+        id: answerId
+    };
+
+    let jsonString = JSON.stringify(answerInfo);
+    $.ajax({
+        url: url,
+        type: 'POST',
+        contentType: 'application/json;charset=UTF-8',
+        data: jsonString
+    });
+}
+</script>
 </html>
