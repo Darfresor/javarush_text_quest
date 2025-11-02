@@ -19,6 +19,9 @@
             <button onclick="nextQuestion(${answer.id})" id="button_answer_${answer.id}"> ${answer.description}</button>
         </c:forEach>
     </p>
+    <c:if test = "${question.defeatFlag || question.winFlag}">
+        <button onclick="restartQuest(2)" id="button_restart_1"> Начать квеста с начала</button>
+    </c:if>
 </div>
 
 <jsp:include page="/WEB-INF/fragments/footer.jsp"/>
@@ -27,6 +30,11 @@
 function nextQuestion(answerId) {
     let url = "/quests/gaming?answer=";
     url = url.concat(answerId)
+    window.location.href = url;
+}
+function restartQuest(questId) {
+    let url = "/quests/start?id=";
+    url = url.concat(questId)
     window.location.href = url;
 }
 </script>
