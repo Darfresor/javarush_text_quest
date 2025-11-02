@@ -20,7 +20,7 @@
         </c:forEach>
     </p>
     <c:if test = "${question.defeatFlag || question.winFlag}">
-        <button onclick="restartQuest(2)" id="button_restart_1"> Начать квеста с начала</button>
+        <button onclick="restartQuest(${sessionScope.questId})" id="button_restart_${sessionScope.questId}"> Начать квеста с начала</button>
     </c:if>
 </div>
 

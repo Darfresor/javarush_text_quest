@@ -20,6 +20,7 @@ public class GamingQuestServlet extends HttpServlet {
         QuestService qs = QuestService.getInstance();
         String answerId = req.getParameter("answer");
         System.out.println("read param answer = "+ answerId);
+
         AnswerDTO answer = qs.getAnswerById(Long.valueOf(answerId));
         QuestionDTO question = answer.getNextQuestion();
 
