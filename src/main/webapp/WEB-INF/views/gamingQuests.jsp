@@ -5,17 +5,17 @@
     <link href="<c:url value='/static/main.css'/>" rel="stylesheet">
     <script src="<c:url value="/static/jquery-3.6.0.min.js"/>"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/main.css">
-    <title>Начало квеста: </title>
+    <title>Квест в процессе прохождения: </title>
 </head>
 <body>
 <jsp:include page="/WEB-INF/fragments/header.jsp"/>
 
 <div class="content">
-    Начало квеста:
-    <p> ${startQuestion.description} </p>
-    <p> ${startQuestion.question} </p>
+    Текущая сцена:
+    <p> ${question.description} </p>
+    <p> ${question.question} </p>
     <p>
-        <c:forEach var="answer" items="${startQuestion.answers}" varStatus="status">
+        <c:forEach var="answer" items="${question.answers}" varStatus="status">
             <button onclick="nextQuestion(${answer.id})" id="button_answer_${answer.id}"> ${answer.description}</button>
         </c:forEach>
     </p>
