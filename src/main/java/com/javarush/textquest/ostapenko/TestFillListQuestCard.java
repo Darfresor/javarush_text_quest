@@ -3,16 +3,16 @@ package com.javarush.textquest.ostapenko;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.javarush.textquest.ostapenko.model.entity.Answer;
-import com.javarush.textquest.ostapenko.model.entity.QuestCard;
-import com.javarush.textquest.ostapenko.model.entity.Question;
+import com.javarush.textquest.ostapenko.model.entity.*;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class TestFillListQuestCard {
     public static void main(String[] args) throws IOException {
@@ -191,6 +191,38 @@ public class TestFillListQuestCard {
                 }
         );
         System.out.println(loadedList);
+
+
+        Set<UserRoles> adminUserRoles = new HashSet<>();
+        adminUserRoles.add(UserRoles.ADMIN);
+        adminUserRoles.add(UserRoles.BASE);
+        User admin = new User("admin","admin",0L);
+        admin.setUserRoles(adminUserRoles);
+
+        Set<UserRoles> ordinaryUserRoles = new HashSet<>();
+        ordinaryUserRoles.add(UserRoles.BASE);
+        User ordinary = new User("user123","user123",0L);
+        ordinary.setUserRoles(ordinaryUserRoles);
+
+        List<User> listUsers = new ArrayList();
+        listUsers.add(admin);
+        listUsers.add(ordinary);
+
+        ObjectMapper mapper4 = new ObjectMapper();
+        mapper4.enable(SerializationFeature.INDENT_OUTPUT);
+        Path sourceResourcesPath4 = Paths.get("src/main/resources/data/quests");
+        mapper4.writerWithDefaultPrettyPrinter()
+                .writeValue(sourceResourcesPath.resolve("listUsers.json").toFile(), listUsers);
+
+        // Чтение из файла обратно в Java объект
+        mapper4 = new ObjectMapper();
+        List<User> loadedList4 = mapper.readValue(
+                new File("src/main/resources/data/quests/listUsers.json"),
+                new TypeReference<List<User>>() {
+                }
+        );
+        System.out.println(loadedList4);
+
 
     }
 }
