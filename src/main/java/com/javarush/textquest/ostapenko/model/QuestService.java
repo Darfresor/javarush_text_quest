@@ -2,13 +2,11 @@ package com.javarush.textquest.ostapenko.model;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.javarush.textquest.ostapenko.dto.AnswerDTO;
-import com.javarush.textquest.ostapenko.dto.QuestCardDTO;
-import com.javarush.textquest.ostapenko.dto.QuestListResponse;
-import com.javarush.textquest.ostapenko.dto.QuestionDTO;
+import com.javarush.textquest.ostapenko.dto.*;
 import com.javarush.textquest.ostapenko.model.entity.Answer;
 import com.javarush.textquest.ostapenko.model.entity.QuestCard;
 import com.javarush.textquest.ostapenko.model.entity.Question;
+import com.javarush.textquest.ostapenko.model.entity.User;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -19,6 +17,7 @@ public class QuestService {
     private List<QuestCard> quests = new ArrayList<>();
     private List<Question> questions = new ArrayList<>();
     private List<Answer> answers = new ArrayList<>();
+    private List<User> users = new ArrayList<>();
 
     private static final QuestService INSTANCE = new QuestService();
 
@@ -26,6 +25,7 @@ public class QuestService {
         loadQuests();
         loadQuestions();
         loadAnswers();
+        loadUsers();
     }
 
     private void loadQuests() {
@@ -61,6 +61,7 @@ public class QuestService {
             System.err.println("error load question: " + e.getMessage());
         }
     }
+
     private void loadAnswers() {
         try {
             ObjectMapper mapper = new ObjectMapper();
@@ -78,6 +79,23 @@ public class QuestService {
         }
     }
 
+    private void loadUsers() {
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            InputStream inputStream = getClass().getClassLoader()
+                    .getResourceAsStream("data/quests/listUsers.json");
+
+            if (inputStream != null) {
+                this.users = mapper.readValue(inputStream,
+                        new TypeReference<List<User>>() {
+                        });
+                System.out.println("Loaded users: " + users.size());
+            }
+        } catch (Exception e) {
+            System.err.println("error load users: " + e.getMessage());
+        }
+    }
+
     public QuestCardDTO getQuestById(Long id) {
         QuestCard currentQuest = quests.stream()
                 .filter(q -> q.getId().equals(id))
@@ -92,6 +110,23 @@ public class QuestService {
                 .findFirst()
                 .orElse(null);
         return convertToDTO(currentAnswer);
+    }
+
+    public boolean verifyUser(String userName, String userPass) {
+        users.stream()
+                .filter(q -> q.getName().equalsIgnoreCase(userName))
+                .filter(q -> q.getPassword().equals(userPass))
+                .findFirst()
+                .orElse(null);
+        return (users != null);
+    }
+
+    public UserDTO getUserByName(String userName) {
+        User user = users.stream()
+                .filter(q -> q.getName().equalsIgnoreCase(userName))
+                .findFirst()
+                .orElse(null);
+        return convertToDTO(user);
     }
 
     public static QuestService getInstance() {
@@ -142,6 +177,7 @@ public class QuestService {
                 question.getWinFlag()
         );
     }
+
     private AnswerDTO convertToDTO(Answer answer) {
         if (answer == null) {
             return null;
@@ -152,6 +188,7 @@ public class QuestService {
                 answer.getNextQuestion() != null ? convertToDTO(answer.getNextQuestion()) : null
         );
     }
+
     private List<AnswerDTO> convertToDTO(List<Answer> answers) {
         if (answers == null) {
             return new ArrayList<>();
@@ -162,5 +199,14 @@ public class QuestService {
         }
         return list;
     }
+
+    private UserDTO convertToDTO(User user) {
+        return new UserDTO(
+                user.getName(),
+                user.getNumberOfGamesPlayed(),
+                user.getUserRoles().stream().map(Enum::name).collect(Collectors.toSet())
+        );
+    }
+
 
 }
