@@ -11,10 +11,10 @@
         </div>
         <div class="nav-right">
             <c:if test="${empty sessionScope.userName}">
-                <a href="#">Вход</a>
+                <a href="/authentication">Вход</a>
             </c:if>
             <c:if test="${not empty sessionScope.userName}">
-                <a href="#">Личный кабинет</a>
+                <a href="/personal">Личный кабинет</a>
             </c:if>
         </div>
     </nav>
