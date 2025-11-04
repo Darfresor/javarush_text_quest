@@ -38,7 +38,10 @@ public class LoginServlet extends HttpServlet {
             System.out.println(user);
             req.getSession().setAttribute("userInfo",user);
             resp.sendRedirect("/personal");
-        };
+        }else{
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/errorLogin.jsp");
+            dispatcher.forward(req, resp);
+        }
 
 
     }

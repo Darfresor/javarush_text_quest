@@ -119,12 +119,12 @@ public class QuestService {
     }
 
     public boolean verifyUser(String userName, String userPass) {
-        users.stream()
+        User searchUser = users.stream()
                 .filter(q -> q.getName().equalsIgnoreCase(userName))
                 .filter(q -> q.getPassword().equals(userPass))
                 .findFirst()
                 .orElse(null);
-        return (users != null);
+        return (searchUser != null);
     }
 
     public boolean registerNewUser(String userName, String userPass) {
