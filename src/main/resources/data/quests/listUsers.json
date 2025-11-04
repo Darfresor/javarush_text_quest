@@ -2,7 +2,7 @@
   "name" : "admin",
   "password" : "admin",
   "numberOfGamesPlayed" : 0,
-  "userRoles" : [ "BASE", "ADMIN" ]
+  "userRoles" : [ "ADMIN", "BASE" ]
 }, {
   "name" : "user123",
   "password" : "user123",

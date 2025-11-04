@@ -12,6 +12,8 @@
 
 <div class="content">
     Начало квеста:
+
+    <p> <img src="${pageContext.request.contextPath}/${startQuestion.imgUrl}"> </p>
     <p> ${startQuestion.description} </p>
     <p> ${startQuestion.question} </p>
     <p>
