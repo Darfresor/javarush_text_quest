@@ -41,7 +41,7 @@
               "imgUrl" : "none",
               "answers" : null,
               "defeatFlag" : true,
-              "winFlag" : true
+              "winFlag" : false
             }
           }, {
             "id" : 6,
@@ -53,7 +53,7 @@
               "imgUrl" : "none",
               "answers" : null,
               "defeatFlag" : false,
-              "winFlag" : false
+              "winFlag" : true
             }
           } ],
           "defeatFlag" : false,
@@ -121,7 +121,7 @@
           "imgUrl" : "none",
           "answers" : null,
           "defeatFlag" : true,
-          "winFlag" : true
+          "winFlag" : false
         }
       }, {
         "id" : 6,
@@ -133,7 +133,7 @@
           "imgUrl" : "none",
           "answers" : null,
           "defeatFlag" : false,
-          "winFlag" : false
+          "winFlag" : true
         }
       } ],
       "defeatFlag" : false,
@@ -157,7 +157,7 @@
       "imgUrl" : "none",
       "answers" : null,
       "defeatFlag" : true,
-      "winFlag" : true
+      "winFlag" : false
     }
   }, {
     "id" : 6,
@@ -169,7 +169,7 @@
       "imgUrl" : "none",
       "answers" : null,
       "defeatFlag" : false,
-      "winFlag" : false
+      "winFlag" : true
     }
   } ],
   "defeatFlag" : false,
@@ -181,7 +181,7 @@
   "imgUrl" : "none",
   "answers" : null,
   "defeatFlag" : true,
-  "winFlag" : true
+  "winFlag" : false
 }, {
   "id" : 6,
   "description" : "Вы лихорадочно давите муравьев попутно повышая статистику.\nБлагодаря повышенной выносливости, чужие удары не могут вам навредить и вы благополучно завершаете первый сценарий.\n",
@@ -189,7 +189,7 @@
   "imgUrl" : "none",
   "answers" : null,
   "defeatFlag" : false,
-  "winFlag" : false
+  "winFlag" : true
 }, {
   "id" : 7,
   "description" : "Заглушка.\n",

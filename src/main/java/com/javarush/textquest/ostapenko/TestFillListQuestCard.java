@@ -104,7 +104,7 @@ public class TestFillListQuestCard {
                 Благодаря повышенной выносливости, чужие удары не могут вам навредить и вы благополучно завершаете первый сценарий.
                 ""","ПОБЕДА!","none");
         answer6.setNextQuestion(question6);
-        question5.setWinFlag(true);
+        question6.setWinFlag(true);
 
 
         Question question7 = new Question(7L, """

@@ -36,7 +36,7 @@
             "imgUrl" : "none",
             "answers" : null,
             "defeatFlag" : true,
-            "winFlag" : true
+            "winFlag" : false
           }
         }, {
           "id" : 6,
@@ -48,7 +48,7 @@
             "imgUrl" : "none",
             "answers" : null,
             "defeatFlag" : false,
-            "winFlag" : false
+            "winFlag" : true
           }
         } ],
         "defeatFlag" : false,
@@ -100,7 +100,7 @@
         "imgUrl" : "none",
         "answers" : null,
         "defeatFlag" : true,
-        "winFlag" : true
+        "winFlag" : false
       }
     }, {
       "id" : 6,
@@ -112,7 +112,7 @@
         "imgUrl" : "none",
         "answers" : null,
         "defeatFlag" : false,
-        "winFlag" : false
+        "winFlag" : true
       }
     } ],
     "defeatFlag" : false,
@@ -128,7 +128,7 @@
     "imgUrl" : "none",
     "answers" : null,
     "defeatFlag" : true,
-    "winFlag" : true
+    "winFlag" : false
   }
 }, {
   "id" : 6,
@@ -140,7 +140,7 @@
     "imgUrl" : "none",
     "answers" : null,
     "defeatFlag" : false,
-    "winFlag" : false
+    "winFlag" : true
   }
 }, {
   "id" : 7,
