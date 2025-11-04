@@ -15,6 +15,7 @@
             </c:if>
             <c:if test="${not empty sessionScope.userInfo}">
                 <a href="/personal">Личный кабинет</a>
+                <a href="/disconnect">Выход</a>
             </c:if>
         </div>
     </nav>
