@@ -6,7 +6,7 @@
         <div class="nav-left">
             <a href="/about">О нас</a> |
             <a href="/quests">Квесты</a> |
-            <a href="#">Форум</a> |
+            <a href="/forum">Форум</a> |
             <a href="/workshop">Мастерская квестов</a>
         </div>
         <div class="nav-right">

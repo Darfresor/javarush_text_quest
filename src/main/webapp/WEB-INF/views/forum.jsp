@@ -5,13 +5,13 @@
     <link href="<c:url value='/static/main.css'/>" rel="stylesheet">
     <script src="<c:url value="/static/jquery-3.6.0.min.js"/>"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/main.css">
-    <title>Мастерская квестов</title>
+    <title>Форум</title>
 </head>
 <body>
 <jsp:include page="/WEB-INF/fragments/header.jsp"/>
 
 <div class="content">
-    <p>Мастерская квестов находится в стадии активной разработки.</p>
+    <p>Форум находится в процессе разработки</p>
 </div>
 
 <jsp:include page="/WEB-INF/fragments/footer.jsp"/>
