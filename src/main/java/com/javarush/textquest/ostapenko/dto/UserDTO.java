@@ -25,4 +25,8 @@ public class UserDTO {
     public Set<String> getUserRoles() {
         return userRoles;
     }
+
+    public void setNumberOfGamesPlayed(Long numberOfGamesPlayed) {
+        this.numberOfGamesPlayed = numberOfGamesPlayed;
+    }
 }

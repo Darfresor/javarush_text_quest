@@ -13,8 +13,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -140,6 +138,15 @@ public class QuestService {
         }
         return (newUser != null);
     }
+    public void updateUserGameCount(String userName, Long numberOfGamesPlayed){
+        users.stream()
+                .filter(q -> q.getName().equalsIgnoreCase(userName))
+                .findFirst()
+                .ifPresent(user->user.setNumberOfGamesPlayed(numberOfGamesPlayed));
+        saveUserListToJson();
+    }
+
+
     private void saveUserListToJson() {
         try {
             ObjectMapper mapper4 = new ObjectMapper();

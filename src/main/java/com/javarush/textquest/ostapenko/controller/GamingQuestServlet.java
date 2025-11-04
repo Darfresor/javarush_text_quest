@@ -3,6 +3,7 @@ package com.javarush.textquest.ostapenko.controller;
 import com.javarush.textquest.ostapenko.dto.AnswerDTO;
 import com.javarush.textquest.ostapenko.dto.QuestCardDTO;
 import com.javarush.textquest.ostapenko.dto.QuestionDTO;
+import com.javarush.textquest.ostapenko.dto.UserDTO;
 import com.javarush.textquest.ostapenko.model.QuestService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -23,8 +24,16 @@ public class GamingQuestServlet extends HttpServlet {
 
         AnswerDTO answer = qs.getAnswerById(Long.valueOf(answerId));
         QuestionDTO question = answer.getNextQuestion();
-
         req.setAttribute("question",question);
+        UserDTO user = (UserDTO) req.getSession().getAttribute("userInfo");
+        if(question.getWinFlag()||question.getDefeatFlag()){
+            String userName = user.getName();
+            Long newNumberOfGamesPlayed =  user.getNumberOfGamesPlayed()+1;
+            qs.updateUserGameCount(userName, newNumberOfGamesPlayed);
+            user.setNumberOfGamesPlayed(newNumberOfGamesPlayed);
+            req.getSession().setAttribute("userInfo",user);
+        }
+
         RequestDispatcher dispatcher  = req.getRequestDispatcher("/WEB-INF/views/gamingQuests.jsp");
         dispatcher.forward(req, resp);
     }
