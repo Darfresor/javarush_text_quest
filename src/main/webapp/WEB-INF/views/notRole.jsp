@@ -5,13 +5,13 @@
     <link href="<c:url value='/static/main.css'/>" rel="stylesheet">
     <script src="<c:url value="/static/jquery-3.6.0.min.js"/>"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/main.css">
-    <title>Необходима авторизация</title>
+    <title>Проблема прав</title>
 </head>
 <body>
 <jsp:include page="/WEB-INF/fragments/header.jsp"/>
 
 <div class="content">
-    <p>Данная страница доступна только зарегистрированным пользователям.</p>
+    <p>Данная страница доступна пользователям с определенными ролями.</p>
 </div>
 
 <jsp:include page="/WEB-INF/fragments/footer.jsp"/>
