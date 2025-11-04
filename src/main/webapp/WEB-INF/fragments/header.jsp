@@ -7,7 +7,7 @@
             <a href="/about">О нас</a> |
             <a href="/quests">Квесты</a> |
             <a href="#">Форум</a> |
-            <a href="#">Мастерская квестов</a>
+            <a href="/workshop">Мастерская квестов</a>
         </div>
         <div class="nav-right">
             <c:if test="${empty sessionScope.userInfo}">
