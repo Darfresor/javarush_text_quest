@@ -13,6 +13,14 @@ public class User {
     public User() {
     }
 
+    public User(String name, String password) {
+        this.name = name;
+        this.password = password;
+        this.numberOfGamesPlayed = 0L;
+        setDefaultRole();
+
+    }
+
     public User(String name, String password, Long numberOfGamesPlayed) {
         this.name = name;
         this.password = password;

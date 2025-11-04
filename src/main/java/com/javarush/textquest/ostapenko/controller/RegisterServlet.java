@@ -1,5 +1,6 @@
 package com.javarush.textquest.ostapenko.controller;
 
+import com.javarush.textquest.ostapenko.dto.UserDTO;
 import com.javarush.textquest.ostapenko.model.QuestService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -31,5 +32,16 @@ public class RegisterServlet extends HttpServlet {
         System.out.println("login: " + username);
         System.out.println("Password: " + password);
         System.out.println("email: " + email);
+        boolean isCreateUser = qs.registerNewUser(username,password);
+        if(isCreateUser){
+            UserDTO user = qs.getUserByName(username);
+            System.out.println(user);
+            req.getSession().setAttribute("userInfo",user);
+            resp.sendRedirect("/personal");
+        }else{
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/errorRegister.jsp");
+            dispatcher.forward(req, resp);
+        }
+
     }
 }

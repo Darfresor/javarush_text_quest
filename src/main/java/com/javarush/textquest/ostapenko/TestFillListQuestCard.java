@@ -212,7 +212,7 @@ public class TestFillListQuestCard {
         mapper4.enable(SerializationFeature.INDENT_OUTPUT);
         Path sourceResourcesPath4 = Paths.get("src/main/resources/data/quests");
         mapper4.writerWithDefaultPrettyPrinter()
-                .writeValue(sourceResourcesPath.resolve("listUsers.json").toFile(), listUsers);
+                .writeValue(sourceResourcesPath4.resolve("listUsers.json").toFile(), listUsers);
 
         // Чтение из файла обратно в Java объект
         mapper4 = new ObjectMapper();

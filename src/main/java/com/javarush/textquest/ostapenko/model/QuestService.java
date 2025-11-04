@@ -2,13 +2,19 @@ package com.javarush.textquest.ostapenko.model;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.javarush.textquest.ostapenko.dto.*;
 import com.javarush.textquest.ostapenko.model.entity.Answer;
 import com.javarush.textquest.ostapenko.model.entity.QuestCard;
 import com.javarush.textquest.ostapenko.model.entity.Question;
 import com.javarush.textquest.ostapenko.model.entity.User;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -119,6 +125,31 @@ public class QuestService {
                 .findFirst()
                 .orElse(null);
         return (users != null);
+    }
+
+    public boolean registerNewUser(String userName, String userPass) {
+        User newUser = null;
+        User existsUser = users.stream()
+                .filter(q -> q.getName().equalsIgnoreCase(userName))
+                .findFirst()
+                .orElse(null);
+        if (existsUser == null) {
+            newUser = new User(userName, userPass);
+            users.add(newUser);
+            saveUserListToJson();
+        }
+        return (newUser != null);
+    }
+    private void saveUserListToJson() {
+        try {
+            ObjectMapper mapper4 = new ObjectMapper();
+            mapper4.enable(SerializationFeature.INDENT_OUTPUT);
+            URL resource = getClass().getClassLoader().getResource("data/quests/listUsers.json");
+            System.out.println(resource);
+            mapper4.writerWithDefaultPrettyPrinter().writeValue(new File(resource.getFile()), users);
+        } catch(IOException e){
+            throw new RuntimeException(e);
+        };
     }
 
     public UserDTO getUserByName(String userName) {
