@@ -12,7 +12,7 @@
 
 <div class="content">
 
-    <form action="/login" method="post">
+    <form action="/login" method="post" autocomplete="off">
         <div>
             <label for="username">Логин:</label>
             <input type="text" id="username" name="username" required>
@@ -34,5 +34,15 @@
 <jsp:include page="/WEB-INF/fragments/footer.jsp"/>
 </body>
 <script>
+    function sendUserInfo() {
+        let url = '/authentication';
+        $.ajax({
+            url: url,
+            type: 'POST',
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8;',
+        });
+
+
+    }
 </script>
 </html>

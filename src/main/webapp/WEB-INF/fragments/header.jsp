@@ -10,10 +10,10 @@
             <a href="#">Мастерская квестов</a>
         </div>
         <div class="nav-right">
-            <c:if test="${empty sessionScope.userName}">
-                <a href="/authentication">Вход</a>
+            <c:if test="${empty sessionScope.userInfo}">
+                <a href="/login">Вход</a>
             </c:if>
-            <c:if test="${not empty sessionScope.userName}">
+            <c:if test="${not empty sessionScope.userInfo}">
                 <a href="/personal">Личный кабинет</a>
             </c:if>
         </div>
