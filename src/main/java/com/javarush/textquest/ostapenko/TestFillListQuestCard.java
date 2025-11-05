@@ -63,7 +63,7 @@ public class TestFillListQuestCard {
                 Беспомощный, вы можете только наблюдать и лишь после ухода причудливого существа к вам возвращается подвижность.
                 К сожалению, как бы вы не старались, пройти задание вам не удается. 
                 
-                ""","ВЫ ПРОИГРАЛИ!","none");
+                ""","ВЫ ПРОИГРАЛИ!","img/quests/id2/failed.jpg");
         answer3.setNextQuestion(question2);
         answer2.setNextQuestion(question2);
         question2.setDefeatFlag(true);

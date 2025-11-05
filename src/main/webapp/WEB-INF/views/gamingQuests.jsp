@@ -46,5 +46,15 @@
         url = url.concat(questId)
         window.location.href = url;
     }
+
+    // Устанавливаем фоновое изображение для content блока
+    document.addEventListener('DOMContentLoaded', function () {
+        const backgroundImage = document.getElementById('backgroundImage');
+        if (backgroundImage) {
+            const gameContent = document.getElementById('gameContent');
+            const imageUrl = backgroundImage.src;
+            gameContent.style.backgroundImage = 'url(' + imageUrl + ')';
+        }
+    });
 </script>
 </html>
