@@ -1,9 +1,13 @@
 /* Основные стили body */
 body {
     margin: 0;
-    padding-top: 90px; /* УВЕЛИЧЕНО с 70px до 90px */
+    padding-top: 90px;
     padding-bottom: 50px;
     min-height: 100vh;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    background-attachment: fixed;
+    color: #e6e6e6;
+    font-family: 'Georgia', 'Times New Roman', serif;
 }
 
 /* Фиксированная шапка */
@@ -12,12 +16,13 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #f8f9fa;
-    padding: 15px 20px; /* УВЕЛИЧЕНО: было 10px 20px */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background: linear-gradient(to right, #2c3e50, #34495e);
+    padding: 15px 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     z-index: 1000;
-    height: 90px; /* УВЕЛИЧЕНО: было 50px */
+    height: 90px;
     box-sizing: border-box;
+    border-bottom: 2px solid #e74c3c;
 }
 
 /* Навигация */
@@ -29,26 +34,84 @@ nav {
 }
 
 .nav-left {
-    font-size: 14px;
+    font-size: 16px;
+    display: flex;
+    gap: 20px;
 }
 
 .nav-right {
     margin-right: 20px;
-    font-size: 14px;
+    font-size: 16px;
+    display: flex;
+    gap: 15px;
+}
+
+/* Стили для ссылок в навигации */
+.nav-left a, .nav-right a {
+    color: #ecf0f1;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    position: relative;
+    font-weight: 500;
+    border: 1px solid transparent;
+}
+
+.nav-left a:hover, .nav-right a:hover {
+    background-color: rgba(231, 76, 60, 0.8);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 1px solid #c0392b;
+}
+
+.nav-left a::after, .nav-right a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #e74c3c;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-left a:hover::after, .nav-right a:hover::after {
+    width: 80%;
+}
+
+/* Разделитель для навигации */
+.nav-left a:not(:last-child)::before {
+    content: '|';
+    position: absolute;
+    right: -12px;
+    color: #7f8c8d;
 }
 
 /* Заголовок h1 в шапке */
 header h1 {
-    margin: 0 0 8px 0; /* ДОБАВЛЕНО: отступ снизу для разделения с меню */
-    font-size: 20px; /* УВЕЛИЧЕНО: было 18px */
+    margin: 0 0 8px 0;
+    font-size: 24px;
     line-height: 1.2;
-    text-align: center; /* ДОБАВЛЕНО: центрируем заголовок */
+    text-align: center;
+    color: #f39c12;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-family: 'Palatino Linotype', 'Book Antiqua', serif;
+    letter-spacing: 1px;
 }
 
 /* Основной контент */
 .content {
-    padding: 20px;
-    min-height: calc(100vh - 140px); /* ОБНОВЛЕНО: 100vh - (90px + 50px) */
+    padding: 30px;
+    min-height: calc(100vh - 140px);
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    margin: 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 /* Фиксированный футер */
@@ -57,12 +120,77 @@ footer {
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #f8f9fa;
+    background: linear-gradient(to right, #2c3e50, #34495e);
     padding: 10px 20px;
     text-align: center;
-    border-top: 1px solid #e9ecef;
+    border-top: 2px solid #e74c3c;
     z-index: 1000;
     height: 40px;
     box-sizing: border-box;
     font-size: 14px;
+    color: #bdc3c7;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Дополнительные стили для текстового RPG сайта */
+
+/* Стили для основного текста */
+.content p {
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+/* Стили для заголовков внутри контента */
+.content h2, .content h3 {
+    color: #f39c12;
+    border-bottom: 2px solid #e74c3c;
+    padding-bottom: 5px;
+    margin-top: 25px;
+    font-family: 'Palatino Linotype', 'Book Antiqua', serif;
+}
+
+/* Стили для кнопок (если понадобятся) */
+.btn-rpg {
+    background: linear-gradient(to bottom, #e74c3c, #c0392b);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Georgia', serif;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.btn-rpg:hover {
+    background: linear-gradient(to bottom, #c0392b, #a93226);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .nav-left {
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .nav-left a:not(:last-child)::before {
+        display: none;
+    }
+
+    header h1 {
+        font-size: 20px;
+    }
+
+    .content {
+        margin: 10px;
+        padding: 20px;
+    }
 }
