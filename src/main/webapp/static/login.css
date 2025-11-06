@@ -1,0 +1,199 @@
+/* login.css - Стили для страниц входа в RPG стиле */
+
+/* Центрирование контента */
+.content {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    min-height: calc(100vh - 140px) !important;
+    padding: 20px !important;
+}
+
+/* Стилизация формы */
+.content form {
+    width: 100% !important;
+    max-width: 450px !important;
+    padding: 40px 35px !important;
+    background: linear-gradient(135deg, rgba(26, 26, 46, 0.95) 0%, rgba(22, 33, 62, 0.95) 50%, rgba(15, 52, 96, 0.95) 100%) !important;
+    border: 2px solid #e74c3c !important;
+    border-radius: 15px !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6) !important;
+    margin: 0 auto !important;
+}
+
+/* Стили для заголовка ошибки */
+.content h1 {
+    text-align: center !important;
+    color: #e74c3c !important;
+    font-family: 'Palatino Linotype', 'Book Antiqua', serif !important;
+    font-size: 22px !important;
+    margin: 0 auto 30px auto !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7) !important;
+    border-bottom: 2px solid #e74c3c !important;
+    padding-bottom: 15px !important;
+    background: linear-gradient(135deg, rgba(231, 76, 60, 0.15) 0%, rgba(192, 57, 43, 0.15) 100%) !important;
+    border-radius: 10px !important;
+    padding: 20px !important;
+    width: 100%;
+    max-width: 450px;
+    box-sizing: border-box;
+}
+
+/* Группы полей */
+.content form div {
+    margin-bottom: 20px !important;
+}
+
+.content form div:last-child {
+    margin-bottom: 0 !important;
+    margin-top: 10px !important;
+}
+
+/* Метки */
+.content form label {
+    display: block !important;
+    margin-bottom: 8px !important;
+    color: #f39c12 !important;
+    font-weight: bold !important;
+    font-family: 'Georgia', serif !important;
+    font-size: 16px !important;
+}
+
+/* Поля ввода */
+.content form input[type="text"],
+.content form input[type="password"] {
+    width: 100% !important;
+    padding: 14px 16px !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 2px solid #34495e !important;
+    border-radius: 8px !important;
+    color: #ecf0f1 !important;
+    font-family: 'Georgia', serif !important;
+    font-size: 15px !important;
+    box-sizing: border-box !important;
+    transition: all 0.3s ease !important;
+}
+
+.content form input[type="text"]:focus,
+.content form input[type="password"]:focus {
+    outline: none !important;
+    border-color: #e74c3c !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.2) !important;
+}
+
+/* Контейнер для кнопок */
+.content form div:last-child {
+    display: flex !important;
+    gap: 15px !important;
+    margin-top: 25px !important;
+}
+
+/* Основная кнопка входа */
+.content form button[type="submit"] {
+    flex: 2 !important;
+    padding: 16px !important;
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-family: 'Georgia', serif !important;
+    font-weight: bold !important;
+    font-size: 16px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+}
+
+.content form button[type="submit"]:hover {
+    background: linear-gradient(135deg, #c0392b 0%, #a93226 100%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(231, 76, 60, 0.6) !important;
+}
+
+/* Кнопка регистрации */
+.content form button[type="button"] {
+    flex: 1 !important;
+    padding: 16px !important;
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-family: 'Georgia', serif !important;
+    font-weight: bold !important;
+    font-size: 14px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+.content form button[type="button"]:hover {
+    background: linear-gradient(135deg, #2980b9 0%, #2471a3 100%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.6) !important;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .content {
+        padding: 15px !important;
+    }
+
+    .content form {
+        padding: 30px 25px !important;
+    }
+
+    .content h1 {
+        font-size: 18px !important;
+        padding: 15px !important;
+    }
+
+    .content form input[type="text"],
+    .content form input[type="password"] {
+        padding: 12px 14px !important;
+        font-size: 14px !important;
+    }
+
+    .content form div:last-child {
+        flex-direction: column !important;
+        gap: 10px !important;
+    }
+
+    .content form button[type="submit"],
+    .content form button[type="button"] {
+        flex: none !important;
+        padding: 14px !important;
+        font-size: 15px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .content {
+        padding: 10px !important;
+    }
+
+    .content form {
+        padding: 25px 20px !important;
+    }
+
+    .content h1 {
+        font-size: 16px !important;
+        padding: 12px !important;
+    }
+
+    .content form label {
+        font-size: 14px !important;
+    }
+
+    .content form input[type="text"],
+    .content form input[type="password"] {
+        padding: 11px 13px !important;
+        font-size: 13px !important;
+    }
+
+    .content form button[type="submit"],
+    .content form button[type="button"] {
+        padding: 13px !important;
+        font-size: 14px !important;
+    }
+}

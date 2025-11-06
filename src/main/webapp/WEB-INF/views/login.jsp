@@ -2,10 +2,10 @@
 <html>
 <head>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <link href="<c:url value='/static/main.css'/>" rel="stylesheet">
-    <script src="<c:url value="/static/jquery-3.6.0.min.js"/>"></script>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/main.css">
-    <title>Вход в личный кабинет: </title>
+    <link href="${pageContext.request.contextPath}/static/main.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/login.css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath}/static/jquery-3.6.0.min.js"></script>
+    <title>Вход в личный кабинет</title>
 </head>
 <body>
 <jsp:include page="/WEB-INF/fragments/header.jsp"/>
