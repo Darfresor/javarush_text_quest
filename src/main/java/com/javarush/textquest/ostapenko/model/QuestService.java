@@ -42,7 +42,7 @@ public class QuestService {
                 this.quests = mapper.readValue(inputStream,
                         new TypeReference<List<QuestCard>>() {
                         });
-                System.out.println("Loaded quests: " + quests.size());
+                //System.out.println("Loaded quests: " + quests.size());
             }
         } catch (Exception e) {
             System.err.println("error load quests: " + e.getMessage());
@@ -59,7 +59,7 @@ public class QuestService {
                 this.questions = mapper.readValue(inputStream,
                         new TypeReference<List<Question>>() {
                         });
-                System.out.println("Loaded question: " + questions.size());
+                //System.out.println("Loaded question: " + questions.size());
             }
         } catch (Exception e) {
             System.err.println("error load question: " + e.getMessage());
@@ -76,7 +76,7 @@ public class QuestService {
                 this.answers = mapper.readValue(inputStream,
                         new TypeReference<List<Answer>>() {
                         });
-                System.out.println("Loaded answer: " + answers.size());
+               // System.out.println("Loaded answer: " + answers.size());
             }
         } catch (Exception e) {
             System.err.println("error load answer: " + e.getMessage());
@@ -93,7 +93,7 @@ public class QuestService {
                 this.users = mapper.readValue(inputStream,
                         new TypeReference<List<User>>() {
                         });
-                System.out.println("Loaded users: " + users.size());
+               // System.out.println("Loaded users: " + users.size());
             }
         } catch (Exception e) {
             System.err.println("error load users: " + e.getMessage());

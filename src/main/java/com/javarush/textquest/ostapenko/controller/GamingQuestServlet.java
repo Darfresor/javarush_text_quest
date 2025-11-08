@@ -20,20 +20,22 @@ public class GamingQuestServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         QuestService qs = QuestService.getInstance();
         String answerId = req.getParameter("answer");
-        System.out.println("read param answer = " + answerId);
+        //System.out.println("read param answer = " + answerId);
 
         AnswerDTO answer = qs.getAnswerById(Long.valueOf(answerId));
         QuestionDTO question = answer.getNextQuestion();
-        req.setAttribute("question", question);
-        UserDTO user = (UserDTO) req.getSession(false).getAttribute("userInfo");
-        if ((question.getWinFlag() || question.getDefeatFlag())
-            && user != null
-        ) {
-            String userName = user.getName();
-            Long newNumberOfGamesPlayed = user.getNumberOfGamesPlayed() + 1;
-            qs.updateUserGameCount(userName, newNumberOfGamesPlayed);
-            user.setNumberOfGamesPlayed(newNumberOfGamesPlayed);
-            req.getSession().setAttribute("userInfo", user);
+        if (question != null) {
+            req.setAttribute("question", question);
+            UserDTO user = (UserDTO) req.getSession(false).getAttribute("userInfo");
+            if ((question.getWinFlag() || question.getDefeatFlag())
+                    && user != null
+            ) {
+                String userName = user.getName();
+                Long newNumberOfGamesPlayed = user.getNumberOfGamesPlayed() + 1;
+                qs.updateUserGameCount(userName, newNumberOfGamesPlayed);
+                user.setNumberOfGamesPlayed(newNumberOfGamesPlayed);
+                req.getSession().setAttribute("userInfo", user);
+            }
         }
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/gamingQuests.jsp");

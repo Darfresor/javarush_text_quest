@@ -10,6 +10,6 @@ public class ContextListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         QuestService questService = QuestService.getInstance();
-        System.out.println("QuestService initialize with start application");
+        //System.out.println("QuestService initialize with start application");
     }
 }

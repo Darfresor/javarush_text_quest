@@ -21,13 +21,13 @@ public class StartQuestServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         QuestService qs = QuestService.getInstance();
         String textId = req.getParameter("id");
-        System.out.println("read param id = "+ textId);
+        //System.out.println("read param id = "+ textId);
         req.getSession().setAttribute("questId",textId);
 
         QuestCardDTO questCard = qs.getQuestById(Long.valueOf(textId));
         QuestionDTO startQuestion = questCard.getStartQuestion();
-        System.out.println(startQuestion.getDescription());
-        System.out.println(startQuestion.getQuestion());
+        //System.out.println(startQuestion.getDescription());
+        //System.out.println(startQuestion.getQuestion());
 
         req.setAttribute("startQuestion",startQuestion);
 
