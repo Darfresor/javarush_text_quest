@@ -1,6 +1,7 @@
 package com.javarush.textquest.ostapenko.controller.main.quests.game;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.javarush.textquest.ostapenko.controller.init.ContextListener;
 import com.javarush.textquest.ostapenko.dto.AnswerDTO;
 import com.javarush.textquest.ostapenko.dto.QuestCardDTO;
 import com.javarush.textquest.ostapenko.dto.QuestionDTO;
@@ -13,22 +14,27 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
 @WebServlet(name="StartQuestServlet", value="/quests/start")
 public class StartQuestServlet extends HttpServlet {
+    private static final Logger log = LoggerFactory.getLogger(StartQuestServlet.class);
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         IQuestService qs = QuestService.getInstance();
         String textId = req.getParameter("id");
-        //System.out.println("read param id = "+ textId);
+        log.debug("read param id =  {}",textId);
         req.getSession().setAttribute("questId",textId);
 
         QuestCardDTO questCard = qs.getQuestById(Long.valueOf(textId));
         QuestionDTO startQuestion = questCard.getStartQuestion();
-        //System.out.println(startQuestion.getDescription());
-        //System.out.println(startQuestion.getQuestion());
+        log.debug("startQuestion Description: {}",startQuestion.getDescription());
+        log.debug("startQuestion Description: {}",startQuestion.getQuestion());
+
 
         req.setAttribute("startQuestion",startQuestion);
 

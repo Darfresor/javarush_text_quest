@@ -11,16 +11,21 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
 @WebServlet(name = "GamingQuestServlet", value = "/quests/gaming")
 public class GamingQuestServlet extends HttpServlet {
+    private static final Logger log = LoggerFactory.getLogger(GamingQuestServlet.class);
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         IQuestService qs = QuestService.getInstance();
         String answerId = req.getParameter("answer");
-        //System.out.println("read param answer = " + answerId);
+        log.debug("read param answer  =  {}", answerId);
+
 
         AnswerDTO answer = qs.getAnswerById(Long.valueOf(answerId));
         QuestionDTO question = answer.getNextQuestion();
