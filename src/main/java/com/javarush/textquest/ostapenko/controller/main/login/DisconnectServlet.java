@@ -1,6 +1,5 @@
-package com.javarush.textquest.ostapenko.controller;
+package com.javarush.textquest.ostapenko.controller.main.login;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -9,11 +8,11 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name="AboutServlet", value="/about")
-public class AboutServlet extends HttpServlet {
+@WebServlet(name = "DisconnectServlet", value = "/disconnect")
+public class DisconnectServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/index.jsp");
-        dispatcher.forward(req,resp);
+        req.getSession().invalidate();
+        resp.sendRedirect("/login");
     }
 }

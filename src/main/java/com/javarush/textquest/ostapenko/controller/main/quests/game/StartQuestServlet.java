@@ -1,4 +1,4 @@
-package com.javarush.textquest.ostapenko.controller;
+package com.javarush.textquest.ostapenko.controller.main.quests.game;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.javarush.textquest.ostapenko.dto.AnswerDTO;

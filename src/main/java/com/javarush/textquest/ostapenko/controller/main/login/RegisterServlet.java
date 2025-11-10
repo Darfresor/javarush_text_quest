@@ -1,4 +1,4 @@
-package com.javarush.textquest.ostapenko.controller;
+package com.javarush.textquest.ostapenko.controller.main.login;
 
 import com.javarush.textquest.ostapenko.dto.UserDTO;
 import com.javarush.textquest.ostapenko.model.QuestService;

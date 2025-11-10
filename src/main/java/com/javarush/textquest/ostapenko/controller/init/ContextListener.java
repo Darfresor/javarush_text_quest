@@ -1,4 +1,4 @@
-package com.javarush.textquest.ostapenko.controller;
+package com.javarush.textquest.ostapenko.controller.init;
 
 import com.javarush.textquest.ostapenko.model.QuestService;
 import jakarta.servlet.ServletContextEvent;

@@ -1,7 +1,6 @@
-package com.javarush.textquest.ostapenko.controller;
+package com.javarush.textquest.ostapenko.controller.main.quests.game;
 
 import com.javarush.textquest.ostapenko.dto.AnswerDTO;
-import com.javarush.textquest.ostapenko.dto.QuestCardDTO;
 import com.javarush.textquest.ostapenko.dto.QuestionDTO;
 import com.javarush.textquest.ostapenko.dto.UserDTO;
 import com.javarush.textquest.ostapenko.model.QuestService;
