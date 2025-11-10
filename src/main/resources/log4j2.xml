@@ -27,6 +27,7 @@
             <AppenderRef ref="RollingFile"/>
         </Root>
         <!-- Детальное логирование инициализации основного сервиса модели -->
+        <Logger name="com.javarush.textquest.ostapenko.controller.main.quests.game.StartQuestServlet" level="info" additivity="false">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="RollingFile"/>
         </Logger>
