@@ -1,6 +1,7 @@
 package com.javarush.textquest.ostapenko.controller.main.quests.choice;
 
 import com.javarush.textquest.ostapenko.dto.QuestListResponse;
+import com.javarush.textquest.ostapenko.model.IQuestService;
 import com.javarush.textquest.ostapenko.model.QuestService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -15,7 +16,7 @@ import java.io.IOException;
 public class QuestsListServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        QuestService qs = QuestService.getInstance();
+        IQuestService qs = QuestService.getInstance();
         QuestListResponse questListResponse = qs.getAllQuests(0,3);
         req.setAttribute("questListResponse",questListResponse);
         RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/quests.jsp");

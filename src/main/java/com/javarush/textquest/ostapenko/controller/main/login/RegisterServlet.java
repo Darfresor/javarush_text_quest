@@ -1,6 +1,7 @@
 package com.javarush.textquest.ostapenko.controller.main.login;
 
 import com.javarush.textquest.ostapenko.dto.UserDTO;
+import com.javarush.textquest.ostapenko.model.IQuestService;
 import com.javarush.textquest.ostapenko.model.QuestService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -21,7 +22,7 @@ public class RegisterServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        QuestService qs = QuestService.getInstance();
+        IQuestService qs = QuestService.getInstance();
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
         // Получаем данные из формы
@@ -29,13 +30,13 @@ public class RegisterServlet extends HttpServlet {
         String password = req.getParameter("password");
         String email = req.getParameter("email");
 
-        System.out.println("login: " + username);
-        System.out.println("Password: " + password);
-        System.out.println("email: " + email);
+        //System.out.println("login: " + username);
+        //System.out.println("Password: " + password);
+        //System.out.println("email: " + email);
         boolean isCreateUser = qs.registerNewUser(username,password);
         if(isCreateUser){
             UserDTO user = qs.getUserByName(username);
-            System.out.println(user);
+            //System.out.println(user);
             req.getSession().setAttribute("userInfo",user);
             resp.sendRedirect("/personal");
         }else{

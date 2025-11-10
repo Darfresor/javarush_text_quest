@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class QuestService {
+public class QuestService implements IQuestService{
     private List<QuestCard> quests = new ArrayList<>();
     private List<Question> questions = new ArrayList<>();
     private List<Answer> answers = new ArrayList<>();
@@ -100,6 +100,7 @@ public class QuestService {
         }
     }
 
+    @Override
     public QuestCardDTO getQuestById(Long id) {
         QuestCard currentQuest = quests.stream()
                 .filter(q -> q.getId().equals(id))
@@ -108,6 +109,7 @@ public class QuestService {
         return convertToDTO(currentQuest);
     }
 
+    @Override
     public AnswerDTO getAnswerById(Long id) {
         Answer currentAnswer = answers.stream()
                 .filter(q -> q.getId().equals(id))
@@ -116,6 +118,7 @@ public class QuestService {
         return convertToDTO(currentAnswer);
     }
 
+    @Override
     public boolean verifyUser(String userName, String userPass) {
         User searchUser = users.stream()
                 .filter(q -> q.getName().equalsIgnoreCase(userName))
@@ -125,6 +128,7 @@ public class QuestService {
         return (searchUser != null);
     }
 
+    @Override
     public boolean registerNewUser(String userName, String userPass) {
         User newUser = null;
         User existsUser = users.stream()
@@ -138,6 +142,8 @@ public class QuestService {
         }
         return (newUser != null);
     }
+
+    @Override
     public void updateUserGameCount(String userName, Long numberOfGamesPlayed){
         users.stream()
                 .filter(q -> q.getName().equalsIgnoreCase(userName))
@@ -159,6 +165,7 @@ public class QuestService {
         };
     }
 
+    @Override
     public UserDTO getUserByName(String userName) {
         User user = users.stream()
                 .filter(q -> q.getName().equalsIgnoreCase(userName))
@@ -171,6 +178,7 @@ public class QuestService {
         return INSTANCE;
     }
 
+    @Override
     public QuestListResponse getAllQuests(int page, int size) {
         List<QuestCard> allQuests = quests;
 

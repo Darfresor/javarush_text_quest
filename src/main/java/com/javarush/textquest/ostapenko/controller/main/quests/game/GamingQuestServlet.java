@@ -3,6 +3,7 @@ package com.javarush.textquest.ostapenko.controller.main.quests.game;
 import com.javarush.textquest.ostapenko.dto.AnswerDTO;
 import com.javarush.textquest.ostapenko.dto.QuestionDTO;
 import com.javarush.textquest.ostapenko.dto.UserDTO;
+import com.javarush.textquest.ostapenko.model.IQuestService;
 import com.javarush.textquest.ostapenko.model.QuestService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -17,7 +18,7 @@ import java.io.IOException;
 public class GamingQuestServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        QuestService qs = QuestService.getInstance();
+        IQuestService qs = QuestService.getInstance();
         String answerId = req.getParameter("answer");
         //System.out.println("read param answer = " + answerId);
 

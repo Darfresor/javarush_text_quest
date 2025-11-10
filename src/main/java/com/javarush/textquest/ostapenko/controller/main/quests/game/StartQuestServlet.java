@@ -5,6 +5,7 @@ import com.javarush.textquest.ostapenko.dto.AnswerDTO;
 import com.javarush.textquest.ostapenko.dto.QuestCardDTO;
 import com.javarush.textquest.ostapenko.dto.QuestionDTO;
 import com.javarush.textquest.ostapenko.dto.UserChoice;
+import com.javarush.textquest.ostapenko.model.IQuestService;
 import com.javarush.textquest.ostapenko.model.QuestService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -19,7 +20,7 @@ import java.io.IOException;
 public class StartQuestServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        QuestService qs = QuestService.getInstance();
+        IQuestService qs = QuestService.getInstance();
         String textId = req.getParameter("id");
         //System.out.println("read param id = "+ textId);
         req.getSession().setAttribute("questId",textId);
@@ -37,7 +38,7 @@ public class StartQuestServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        QuestService qs = QuestService.getInstance();
+        IQuestService qs = QuestService.getInstance();
 
         ObjectMapper mapper = new ObjectMapper();
         UserChoice userChoice = mapper.readValue(req.getReader(), UserChoice.class);
